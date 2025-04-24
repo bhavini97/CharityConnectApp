@@ -39,6 +39,13 @@ module.exports ={
          if(!user){
           throw new Error(`User doesn't exist`)
          }
+         if(user.status==='PENDING'){
+          throw new Error(`Waiting for Admin approval`); 
+      }
+      else if(user.status==='DECLINE'){
+          await User.destroy({where:{id:user.id}})
+          throw new Error(`ADMIN REJECTED YOUR APPLICATION`); 
+      }
 
      //MATCHING password with stored encrypted password
          const match = await bcrypt.compare(password,user.password);

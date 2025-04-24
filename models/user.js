@@ -24,6 +24,10 @@ const User = sequelize.define(
       totalCharity:{
         type :DataTypes.INTEGER,
         defaultValue: 0
+      },
+      status: { 
+        type: DataTypes.ENUM("PENDING", "ACCEPT", "DECLINE"), 
+        defaultValue: "PENDING" 
       }
     
     },

@@ -27,8 +27,8 @@ module.exports = {
       return res.status(200).json({message:'Login Successful',token})
        }
        catch(err){
-        console.log(err);
-        return res.status(401).json({message:'something went wrong while loggin'})
+        
+        return res.status(401).json({message:err.message})
        }
   },
 

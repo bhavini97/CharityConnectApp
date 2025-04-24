@@ -1,4 +1,4 @@
-const { Charity } = require("../models/centralized");
+const { Charity, User } = require("../models/centralized");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -45,6 +45,31 @@ module.exports = {
   updateOrganisationStatus: async (status,id) => {
     try {
       return await Charity.update({ status }, { where: { id } });
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  },
+  getAllUsers: async () => {
+    try {
+      return await User.findAll();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  },
+  deleteUsers: async (id) => {
+    try {
+      return await User.destroy({ where: { id } });
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  },
+
+  updateUsers: async (status,id) => {
+    try {
+      return await User.update({ status }, { where: { id } });
     } catch (err) {
       console.error(err);
       throw err;

@@ -27,4 +27,17 @@ router.delete('/organisations/:id', middleware,adminController.deleteOrganisatio
 
 // Route to update a charity's status
 router.put('/organisations/:id/status', middleware, adminController.updateOrganisationStatus);
+
+router.get('/users',(req,res)=>{
+    res.sendFile(path.join(__dirname,"..","views","static","admin","userChange.html"));
+})
+
+// Route to get all charities
+router.get('/user', middleware, adminController.getAllUsers);
+
+// Route to delete a charity by ID
+router.delete('/user/:id', middleware,adminController.deleteUsers);
+
+// Route to update a charity's status
+router.put('/user/:id/status', middleware, adminController.updateUsers);
 module.exports = router;
