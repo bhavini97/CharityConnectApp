@@ -1,6 +1,7 @@
 const { Order, CharityProjects,User } = require("../models/centralized");
 const {sequelize} = require('../config/db');
 const cashfreeService = require("../service/cashfree");
+const emailService = require('./emailService');
 /**
  * Create a payment order and return session ID.
  */
@@ -71,8 +72,9 @@ async function getPaymentStatus(orderId,charity_project_name,charity_id,userId) 
             }
           },{transaction: t}
         )
+        
       }
-
+        await emailService.sendPaymentStatus(order_status);
       // Update order status in order table
       const [result] = await Order.update({ status: order_status }, { where: { order_id: orderId } }, { transaction: t });
 

@@ -10,6 +10,7 @@ async function userDetails() {
     const user = response.data.result;
     document.getElementById("name").value = user.username;
     document.getElementById("email").value = user.email;
+    document.getElementById('totalAmt').innerHTML+=`₹`+user.totalCharity;
   } catch (err) {
     console.error("Error fetching user details:", err.message);
   }

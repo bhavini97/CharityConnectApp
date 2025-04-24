@@ -31,7 +31,7 @@ module.exports = {
   organisationDeleteNotification : async()=>{
     const sender = {
         email: "bkumar221b@gmail.com",
-        name: "!!! Your Organisation application is rejected",
+        name: "!!! Your application is rejected",
       };
       const receivers = [{ email: "bkumar221b@gmail.com" }];
   
@@ -48,4 +48,21 @@ module.exports = {
       return { message: "Notification email sent successfully!" };
     },
   
+    sendPaymentStatus : async(status) =>{
+        const sender = {
+            email: "bkumar221b@gmail.com",
+            name: "Payment Details",
+          };
+          const receivers = [{ email: "bkumar221b@gmail.com" }];
+      
+          // setting receiver and sender data and content of mail
+          await tranEmailApi.sendTransacEmail({
+            sender,
+            to: receivers,
+            subject: "Payment Status",
+            textContent: ` Your payment status is : ${status}`,
+          });
+      
+          return { message: "Notification email sent successfully!" };
+        },
 };
