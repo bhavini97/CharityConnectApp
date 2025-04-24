@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard - CharityConnect</title>
+  <link rel="stylesheet" href="/css/searchPage.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h2>CharityConnect</h2>
+        <div class="profile">
+          <button id="profileBtn">Profile</button>
+        </div>
+      </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search projects by name or category..." />
+  </div>
+
+  <ul class="project-list" id="projectList">
+    <!-- Projects will be rendered here -->
+  </ul>
+  <div id="pagination" style="text-align: center; margin-top: 1rem;"></div>
+
+  <script src="/js/user/searchPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  
+  
+  .search-bar {
+    padding: 1rem 2rem;
+    text-align: center;
+  }
+  
+  .search-bar input {
+    width: 60%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .project-list {
+    padding: 1rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .project-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .project-item {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .profile button {
+    background-color: #00b4d8;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile button:hover {
+    background-color: #0077b6;
+  }
+  .pay-btn {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pay-btn:hover {
+    background-color: #0077b6;
+  }
+  

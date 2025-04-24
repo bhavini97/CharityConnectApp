@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link href="/css/charityProfile.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Your Organisation Profile</title>
+</head>
+<body>
+  <div class="profile-container">
+    <h2> Profile</h2>
+    <ul id="profileDetails">
+      <li>
+        <label for="name">Name</label>
+        <input type="text" id="name" disabled />
+      </li>
+      <li>
+        <label for="email">Email</label>
+        <input type="email" id="email" disabled />
+      </li>
+      <li>
+        <label for="location">Location</label>
+        <input type="text" id="location" disabled />
+      </li>
+      <li>
+        <label for="info">Info</label>
+        <input type="text" id="info" disabled />
+      </li>
+      
+    </ul>
+
+    <div class="btns">
+      <button class="edit-btn" onclick="enableEdit()">Edit</button>
+      <button class="save-btn" onclick="saveProfile()" disabled id="saveBtn">Save</button>
+    </div>
+  </div>
+  
+
+<script src="/js/charity/charityProfile.js"></script>
+
+</body>
+</html>
