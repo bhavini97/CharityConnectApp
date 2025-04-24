@@ -1,6 +1,8 @@
 const authService = require("../service/auth");
 
 module.exports = {
+
+  /// when users sign in, this function register it in db table
   addUserToTable: async (req, res) => {
     const { username, password, email } = req.body;
 
@@ -17,6 +19,8 @@ module.exports = {
       return res.status(401).json({ message: err.message });
     }
   },
+
+  // this login the user and give jwt token in return 
   loginUser : async(req,res)=>{
       const {email,password} = req.body;
       if(!email || !password){
@@ -32,7 +36,4 @@ module.exports = {
        }
   },
 
-  getUserDetails: async(req,res)=>{
-
-  }
 };

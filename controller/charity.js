@@ -1,6 +1,9 @@
 const charity = require('../service/charity');
-
+const uploadToS3 = require('../service/S3Service');
+const emailService = require('../service/emailService');
 module.exports = {
+
+    /// this add new charity organjisation in charity table
     addNewOrganization : async(req,res)=>{
 
         const {name,password,email,location,info} = req.body;
@@ -17,6 +20,8 @@ module.exports = {
         }
     },
 
+    // this login the charity and send token. 
+    // if the status of application is pending it will not login
     loginCharityOrg : async(req,res)=>{
         const {email,password} = req.body;
 
@@ -31,5 +36,26 @@ module.exports = {
         console.log(err);
         return res.status(401).json({message:err.message})
        }
+    },
+
+    // this is to send to send reports and updates to users
+    // this takes file from frontend and uploads it in s3
+    // filename creates a unique filename that charity sends
+    sendReportoEmail: async (req, res) => {
+        try{
+        const file = req.file;  
+        const fileName = `impact_report_${Date.now()}.pdf`;  
+    
+        // Upload the file to S3
+        const fileUrl = await uploadToS3(file.buffer, fileName);
+    
+        // Send email with the file URL
+        await emailService.sendReportEmail(fileUrl);  // This will send the file URL in an email
+    
+        res.status(200).json({ message: 'Report uploaded and email sent successfully' });
+      } catch (err) {
+        console.error('Error uploading report:', err);
+        res.status(500).json({ message: 'Error uploading report' });
+      }
     }
 }

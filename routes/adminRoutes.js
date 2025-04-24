@@ -32,12 +32,12 @@ router.get('/users',(req,res)=>{
     res.sendFile(path.join(__dirname,"..","views","static","admin","userChange.html"));
 })
 
-// Route to get all charities
+// Route to get all users
 router.get('/user', middleware, adminController.getAllUsers);
 
-// Route to delete a charity by ID
+// Route to delete a users by ID
 router.delete('/user/:id', middleware,adminController.deleteUsers);
 
-// Route to update a charity's status
+// Route to update a users status
 router.put('/user/:id/status', middleware, adminController.updateUsers);
 module.exports = router;

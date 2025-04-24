@@ -41,7 +41,6 @@ module.exports = {
     }
     try {
       const result = await charityProject.findAllProjects(id);
-      console.log(result);
       return res.status(200).json({ message: "projects data", result });
     } catch (err) {
       console.log(err);

@@ -63,4 +63,30 @@ async function saveProfile() {
     alert("Failed to update profile.");
   }
 }
+
+/// this will upload pdf to the  backend
+const uploadForm = document.getElementById("uploadForm");
+if(uploadForm){
+
+uploadForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const token = localStorage.getItem("token");
+
+  try {
+    const res = await axios.post("/charity/send-report", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    alert(res.data.message);
+  } catch (err) {
+    alert("Failed to send report");
+    console.error(err);
+  }
+});
+}
 window.addEventListener("DOMContentLoaded", userDetails);

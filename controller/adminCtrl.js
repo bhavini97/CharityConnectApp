@@ -3,6 +3,7 @@ const emailService = require('../service/emailService');
 
 module.exports = {
 
+    // admin login with passkey 
     loginAdmin: async(req,res)=>{
         const password = req.body.password;
         try{
@@ -15,6 +16,7 @@ module.exports = {
        }
   },
 
+  /// this get all the charity organisations present in charity table
     getAllOrganisations: async (req, res) => {
         if(req.user.role !== 'admin'){
             return res.status(500).json({ message: "You are not admin" });
@@ -28,6 +30,7 @@ module.exports = {
       }
     },
   
+    // this delete the organisation that admin deletes
     deleteOrganisation: async (req, res) => {
         if(req.user.role !== 'admin'){
             return res.status(500).json({ message: "You are not admin" });
@@ -43,6 +46,7 @@ module.exports = {
       }
     },
   
+    // this update the organisation status
     updateOrganisationStatus: async (req, res) => {
         if(req.user.role !== 'admin'){
             return res.status(500).json({ message: "You are not admin" });

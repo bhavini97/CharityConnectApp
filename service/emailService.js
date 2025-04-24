@@ -65,4 +65,43 @@ module.exports = {
       
           return { message: "Notification email sent successfully!" };
         },
+
+        sendReportEmail: async(fileUrl)=>{
+            const sender = {
+                email: "bkumar221b@gmail.com",
+                name: "Report Details",
+              };
+              const receivers = [{ email: "bkumar221b@gmail.com" }];
+          
+              // setting receiver and sender data and content of mail
+              await tranEmailApi.sendTransacEmail({
+                sender,
+                to: receivers,
+                subject: "Our Weekly Updates",
+                textContent: `Hi, How are you doing? This is our weekly updates. We send it to you so that you can take pride of the impact that you have made on our society. this is give you the quick review on how our contributions is being spent.
+                Link: ${fileUrl}
+                Thanks
+                Regards`
+                
+              });
+          
+              return { message: "Notification email sent successfully!" };
+        },
+        sendReminder : async()=>{
+            const sender = {
+                email: "bkumar221b@gmail.com",
+                name: "We miss You!!",
+              };
+              const receivers = [{ email: "bkumar221b@gmail.com" }];
+          
+              // setting receiver and sender data and content of mail
+              await tranEmailApi.sendTransacEmail({
+                sender,
+                to: receivers,
+                subject: 'Visit us today',
+                textContent: ` <p>Hi there! <br>Don’t forget to check out new charity campaigns happening now.</p>`,
+              });
+          
+              return { message: "Notification email sent successfully!" };
+        }
 };

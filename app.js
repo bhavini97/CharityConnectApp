@@ -4,13 +4,13 @@ const {syncDB} = require('./models/centralized');
 require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
-const authRouter = require('./routes/auth');
-const charityRoutes = require('./routes/charity');
-const charityProjectsRoutes = require('./routes/charityProjects')
+const authRouter = require('./routes/authRoutes');
+const charityRoutes = require('./routes/charityRoutes');
+const charityProjectsRoutes = require('./routes/charityProjectsRoutes')
 const orderRoutes = require('./routes/orderRoutes');
 const userRoutes = require('./routes/userRoutes')
 const adminRoutes = require('./routes/adminRoutes');
-
+require('./service/cronScheduler'); 
 
 app.use(cors(
         {

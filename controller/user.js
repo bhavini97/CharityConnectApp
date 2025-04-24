@@ -3,6 +3,8 @@ const uploadToS3 = require('../service/S3Service');
 const UserFileDownload = require('../models/userfileDownload');
 ;
 module.exports = {
+
+  // this will get user details for user profile.
     getUserDetails: async(req,res)=>{
         const userId = req.user.userId;
 
@@ -15,6 +17,7 @@ module.exports = {
         }
     },
 
+    /// this will send data to service to update user data
     updateUserDetails: async (req, res) => {
         const userId = req.user.userId;
         const { name, email } = req.body;
@@ -27,11 +30,14 @@ module.exports = {
           return res.status(500).json({ message: 'Failed to update user' });
         }
       },
+
+      /// this will upload the file to s3;
+      // user first call service to fetch all the order records present in order table
+      // then create  a uniue filename and send the result in params of s3 function
       downloadFiles: async(req,res)=>{
         const userId = req.user.userId;
         try{
            const result = await userService.getAllUserCharity(userId);
-           console.log(result);
            const fileName = `YourDetails${new Date().toISOString()}.txt`;
            const fileUrl = await uploadToS3(JSON.stringify(result), fileName);
            try{
@@ -48,6 +54,8 @@ module.exports = {
         return res.status(500).json({ message: err.message });
       }
     },
+
+    /// this will get all the previously download s3 files from userfiledownload table
 
     prevDownloadFiles : async(req,res)=>{
       const userId = req.user.userId;
